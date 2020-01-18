@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Geometry
 {
@@ -6,7 +7,15 @@ namespace Geometry
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.CursorVisible = false; //todo: move to config
+
+            GameMemory.Initialize();
+            
+            while (true)
+            {
+                Renderer.DrawScreen();
+                Input.AcceptInput();
+            }
         }
     }
 }

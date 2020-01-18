@@ -1,23 +1,21 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Ray
+namespace Geometry.Entities
 {
     class Pixel
     {
-        public int x;
-        public int y;
-
-        public bool IsLit { get; set; } = false;
-
+        public float x;
+        public float y;
         public char shape;
+        public ConsoleColor color;
+        public bool IsLit = false;
 
-        public ConsoleColor color { get; set; } = ConsoleColor.White;
+        public int Xgrid => (int) Math.Round(x);
+        public int Ygrid => (int) Math.Round(y);
 
-        public Pixel(int x, int y, char shape = '.', ConsoleColor color=ConsoleColor.White)
+
+        public Pixel(float x, float y, char shape, ConsoleColor color)
         {
             this.x = x;
             this.y = y;
@@ -27,27 +25,37 @@ namespace Ray
 
         public void Draw()
         {
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(Xgrid, Ygrid);
             Console.ForegroundColor = color;
             Console.Write(shape);
             Console.ForegroundColor = ConsoleColor.White;
         }
 
+        public List<Pixel> GetSurroundingCells()
+        {
+            return new List<Pixel>
+            {
+                new Pixel(x - 1, y - 1, ' ', ConsoleColor.White),
+                new Pixel(x, y - 1, ' ', ConsoleColor.White),
+                new Pixel(x + 1, y - 1, ' ', ConsoleColor.White),
+                new Pixel(x - 1, y, ' ', ConsoleColor.White),
+                new Pixel(x + 1, y, ' ', ConsoleColor.White),
+                new Pixel(x - 1, y + 1, ' ', ConsoleColor.White),
+                new Pixel(x, y + 1, ' ', ConsoleColor.White),
+                new Pixel(x + 1, y + 1, ' ', ConsoleColor.White),
+            };
+        }
+        
         public double DistanceToAnotherPixel(Pixel anotherPixel)
         {
             double distance = Math.Sqrt(Math.Pow(anotherPixel.x - x, 2) + Math.Pow(anotherPixel.y - y, 2));
             return distance;
         }
-
+        
         public bool IsNotDiagonalToAnotherNearestPixel(Pixel anotherPixel)
         {
             var distanceToAnotherPixel = DistanceToAnotherPixel(anotherPixel);
             return DistanceToAnotherPixel(anotherPixel) == 1;
-        }
-
-        public void ChangeLightState()
-        {
-            IsLit = !IsLit;
         }
 
         public void Move(ConsoleKeyInfo key)
@@ -68,6 +76,5 @@ namespace Ray
                     break;
             }
         }
-
     }
 }
