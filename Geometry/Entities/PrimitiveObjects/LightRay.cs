@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Geometry.Entities.BodyParts;
 using Geometry.Entities.ComplexObjects;
 
-namespace Geometry.Entities.MultipixelObjects
+namespace Geometry.Entities.PrimitiveObjects
 {
-    class LightRay : MultipixelObject
+    class LightRay : PrimitiveObject
     {
         private Pixel startPoint;
         private Pixel endPoint;
+        public double length;
 
         public LightRay(Pixel source, Pixel goal, char shape, ConsoleColor color) : base(shape, color)
         {
             startPoint = source;
             endPoint = goal;
-            GenerateBody();
+            length = GenerateBody();
         }
 
         public override void Draw()
@@ -27,16 +27,16 @@ namespace Geometry.Entities.MultipixelObjects
         {
             bool result = false;
 
-            foreach (IComplexObject<MultipixelObject> complexObject in GameMemory.visibleComplexObjectsList)
+            foreach (ComplexObject<PrimitiveObject> complexObject in GameMemory.visibleComplexObjectsList)
             {
-                foreach (MultipixelObject MultipixelObj in complexObject.Body.Parts)
+                foreach (PrimitiveObject MultipixelObj in complexObject.Body.Parts)
                 {
                     foreach (Pixel pixel in MultipixelObj.Body.Pixels)
                     {
                         if (pixel.Xgrid == currentPixel.Xgrid && pixel.Ygrid == currentPixel.Ygrid)
                         {
                             result = true;
-                            pixel.IsLit = result;
+                            pixel.isLit = result;
                         }
                     }
                 }
@@ -45,7 +45,7 @@ namespace Geometry.Entities.MultipixelObjects
             return result;
         }
 
-        private void GenerateBody()
+        private double GenerateBody()
         {
             double distX = endPoint.x - startPoint.x;
             double distY = endPoint.y - startPoint.y;
@@ -64,7 +64,7 @@ namespace Geometry.Entities.MultipixelObjects
             int freeMovesLeft = 0;
 
             Pixel currentCell = startPoint;
-            //currentCell.Draw(); //for debugging
+            // currentCell.Draw(); //for debugging
             //endPoint.Draw(); //for debugging
 
             while ((currentCell.x == endPoint.x && currentCell.y == endPoint.y) == false)
@@ -73,15 +73,16 @@ namespace Geometry.Entities.MultipixelObjects
                 moderatedMovesLeft += restrictedMovesMaxFloor;
                 if (FreeMarching(ref currentCell, ref moderatedMovesLeft, ref freeMovesLeft))
                 {
-                    return;
+                    return currentCell.DistanceToAnotherPixel(startPoint);
                 }
                 if (RestrictedMarching(ref currentCell, ref moderatedMovesLeft, FloatingPointDelta))
                 {
-                    return;
+                    return currentCell.DistanceToAnotherPixel(startPoint);
                 }
             }
 
-            endPoint.IsLit = true;
+            endPoint.isLit = true;
+            return currentCell.DistanceToAnotherPixel(startPoint);
         }
 
         private bool RestrictedMarching(ref Pixel currentCell, ref double moderatedMovesLeft, double FloatingPointDelta)

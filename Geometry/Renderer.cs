@@ -9,7 +9,7 @@ namespace Geometry
 {
     static class Renderer
     {
-        public static void DrawScreen()
+        public static void Draw2D()
         {
             GameMemory.PerimeterWall.Unlight();
             GameMemory.Obsticle.Unlight();

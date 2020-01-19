@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using Geometry.Entities.BodyParts;
 
-namespace Geometry.Entities.MultipixelObjects
+namespace Geometry.Entities.PrimitiveObjects
 {
-     class Line : MultipixelObject
+     class Line : PrimitiveObject
     {
         private Pixel startPoint;
         private Pixel endPoint;
@@ -18,11 +16,6 @@ namespace Geometry.Entities.MultipixelObjects
             GenerateBody();
         }
 
-        public override void Draw()
-        {
-            Body.Pixels.ToList().ForEach(p => p.Draw());
-        }
-        
         private void GenerateBody()
         {
             double distX = endPoint.x - startPoint.x;
@@ -53,7 +46,7 @@ namespace Geometry.Entities.MultipixelObjects
                 RestrictedMarching(ref currentCell, ref moderatedMovesLeft, FloatingPointDelta);
             }
 
-            endPoint.IsLit = true;
+            endPoint.isLit = true;
         }
 
         private void RestrictedMarching(ref Pixel currentCell, ref double moderatedMovesLeft, double FloatingPointDelta)

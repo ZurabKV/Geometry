@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Linq;
-using Geometry.Entities.MultipixelObjects;
 
-namespace Geometry.Entities.BodyParts
+namespace Geometry.Entities.PrimitiveObjects
 {
 
-    abstract class MultipixelObject
+    abstract class PrimitiveObject
     {
         protected char Shape;
         protected ConsoleColor Color;
 
         public PixelBody Body;
 
-        public MultipixelObject(char shape, ConsoleColor color)
+        public PrimitiveObject(char shape, ConsoleColor color)
         {
             Shape = shape;
             Color = color;
@@ -21,7 +20,7 @@ namespace Geometry.Entities.BodyParts
 
         public virtual void Draw()
         {
-            Body.Pixels.ToList().ForEach(p => p.Draw());
+            Body.Pixels.Where(p=>p.isLit==true).ToList().ForEach(p => p.Draw());
         }
     }
 }

@@ -18,19 +18,18 @@ namespace Geometry
 
         private static void ControlPixel(Pixel pixel, ConsoleKeyInfo key)
         {
-            
             switch (key.Key)
             {
-                case ConsoleKey.LeftArrow:
+                case ConsoleKey.A:
                     pixel.x--;
                     break;
-                case ConsoleKey.RightArrow:
+                case ConsoleKey.D:
                     pixel.x++;
                     break;
-                case ConsoleKey.UpArrow:
+                case ConsoleKey.W:
                     pixel.y--;
                     break;
-                case ConsoleKey.DownArrow:
+                case ConsoleKey.S:
                     pixel.y++;
                     break;
             }

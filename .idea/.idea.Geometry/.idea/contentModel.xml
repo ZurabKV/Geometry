@@ -9,18 +9,19 @@
         <e p="Entities" t="Include">
           <e p="ComplexObjects" t="Include">
             <e p="ComplexBody.cs" t="Include" />
-            <e p="IComplexObject.cs" t="Include" />
+            <e p="ComplexObject.cs" t="Include" />
             <e p="Light.cs" t="Include" />
             <e p="Obsticles.cs" t="Include" />
           </e>
-          <e p="MultipixelObjects" t="Include">
+          <e p="Pixel.cs" t="Include" />
+          <e p="PrimitiveObjects" t="Include">
+            <e p="Circle.cs" t="Include" />
             <e p="LightRay.cs" t="Include" />
             <e p="Line.cs" t="Include" />
-            <e p="MultipixelObject.cs" t="Include" />
             <e p="PixelBody.cs" t="Include" />
+            <e p="PrimitiveObject.cs" t="Include" />
             <e p="Walls.cs" t="Include" />
           </e>
-          <e p="Pixel.cs" t="Include" />
         </e>
         <e p="GameMemory.cs" t="Include" />
         <e p="Geometry.csproj" t="IncludeRecursive" />

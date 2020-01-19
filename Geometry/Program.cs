@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 
 namespace Geometry
 {
@@ -13,7 +15,9 @@ namespace Geometry
             
             while (true)
             {
-                Renderer.DrawScreen();
+                Renderer.Draw2D();
+                Thread.Sleep(100);
+                Console.WriteLine(GameMemory.Obsticle.Body.Parts.First().Body.Pixels.Count);
                 Input.AcceptInput();
             }
         }

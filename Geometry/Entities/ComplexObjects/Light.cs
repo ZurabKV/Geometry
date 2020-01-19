@@ -1,22 +1,14 @@
 ﻿using System;
-using Geometry.Entities.MultipixelObjects;
+using Geometry.Entities.PrimitiveObjects;
 
 namespace Geometry.Entities.ComplexObjects
 {
-    class Light : IComplexObject<LightRay>
+    class Light : ComplexObject<LightRay>
     {
-        private char Shape;
-        private ConsoleColor Color;
-        
         public Pixel source { get; set; }
 
-        public ComplexBody<LightRay> Body { get; set; }
-
-        public Light(Pixel lightSource, char shape, ConsoleColor color)
+        public Light(Pixel lightSource, char shape, ConsoleColor color) : base(shape, color)
         {
-            Shape = shape;
-            Color = color;
-            Body = new ComplexBody<LightRay>();
             source = lightSource;
         }
 
@@ -24,7 +16,7 @@ namespace Geometry.Entities.ComplexObjects
         {
             Body.Parts.Clear();
             GetBody();
-            Body.Parts.ForEach(r => r.Draw());
+            // Body.Parts.ForEach(r => r.Draw());
             source.Draw();
         }
 

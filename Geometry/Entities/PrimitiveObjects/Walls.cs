@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Geometry.Entities.BodyParts;
 
-namespace Geometry.Entities.MultipixelObjects
+namespace Geometry.Entities.PrimitiveObjects
 {
-    class Walls: MultipixelObject
+    class Walls: PrimitiveObject
     {
         private int SizeX;
 
@@ -29,7 +25,7 @@ namespace Geometry.Entities.MultipixelObjects
         
         public void Unlight()
         {
-            Body.Pixels.ForEach(p=>p.IsLit=false);
+            Body.Pixels.ForEach(p=>p.isLit=false);
         }
 
         protected void GenerateSquareBody()

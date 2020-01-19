@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Geometry.Entities.MultipixelObjects
+namespace Geometry.Entities.PrimitiveObjects
 {
     class PixelBody
     {
