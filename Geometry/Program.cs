@@ -17,7 +17,6 @@ namespace Geometry
             {
                 Renderer.Draw2D();
                 Thread.Sleep(100);
-                Console.WriteLine(GameMemory.Obsticle.Body.Parts.First().Body.Pixels.Count);
                 Input.AcceptInput();
             }
         }

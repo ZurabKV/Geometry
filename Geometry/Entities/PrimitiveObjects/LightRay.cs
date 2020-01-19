@@ -26,7 +26,10 @@ namespace Geometry.Entities.PrimitiveObjects
         private bool CheckIfIntersectedAnyVisiblePixel(Pixel currentPixel)
         {
             bool result = false;
-
+            if (GameMemory.visibleComplexObjectsList.Count==0)
+            {
+                return result;
+            }
             foreach (ComplexObject<PrimitiveObject> complexObject in GameMemory.visibleComplexObjectsList)
             {
                 foreach (PrimitiveObject MultipixelObj in complexObject.Body.Parts)

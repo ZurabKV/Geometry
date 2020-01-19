@@ -11,14 +11,16 @@ namespace Geometry
     {
         public static void Draw2D()
         {
-            GameMemory.PerimeterWall.Unlight();
-            GameMemory.Obsticle.Unlight();
+            GameMemory.PerimeterWall?.Unlight();
+            GameMemory.Obsticle?.Unlight();
             Console.Clear();
             
-            GameMemory.light.Cast();
+            GameMemory.light?.Cast();
             
-            GameMemory.PerimeterWall.Draw();
-            GameMemory.Obsticle.Draw();
+            GameMemory.PerimeterWall?.Draw();
+            GameMemory.Obsticle?.Draw();
+            GameMemory.center.Draw();
+            GameMemory.player.Draw();
         }
     }
 }

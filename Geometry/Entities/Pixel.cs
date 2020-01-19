@@ -5,7 +5,7 @@ namespace Geometry.Entities
 {
     class Pixel
     {
-        private static int counter=0;
+        private static int counter = 0;
         public int id;
         public double x;
         public double y;
@@ -39,10 +39,19 @@ namespace Geometry.Entities
 
         public void RotateAround(Pixel otherPixel, double degrees)
         {
-            double x_, y_;
-            x_ = x * Math.Cos(degrees) - y * Math.Sin(degrees);
-            y_ = y * Math.Cos(degrees) - x * Math.Sin(degrees);
-            x = x_; y = y_;
+            double dx = x - otherPixel.x;
+            double dy = y - otherPixel.y;
+
+            double rads = degrees * Math.PI / 180;
+
+            double cos = Math.Cos(rads);
+            double sin = Math.Sin(rads);
+
+            double x_ = dx * cos - dy * sin;
+            double y_ = dy * cos + dx * sin;
+
+            x = otherPixel.x + x_;
+            y = otherPixel.y + y_;
         }
 
         public List<Pixel> GetSurroundingCells()
@@ -62,7 +71,8 @@ namespace Geometry.Entities
 
         public double DistanceToAnotherPixel(Pixel anotherPixel)
         {
-            double distance = Math.Sqrt(Math.Pow(anotherPixel.x - x, 2) + Math.Pow(anotherPixel.y - y, 2));
+            double distance =
+                Math.Sqrt(Math.Pow(anotherPixel.Xgrid - Xgrid, 2) + Math.Pow(anotherPixel.Ygrid - Ygrid, 2));
             return distance;
         }
 

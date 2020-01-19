@@ -17,6 +17,9 @@ namespace Geometry
         
         public static Obsticles Obsticle = new Obsticles('D', ConsoleColor.Magenta);
         
+        public  static  Pixel player = new Pixel(30, 10, '%', ConsoleColor.Blue);
+        public  static  Pixel center = new Pixel(23, 10, '$', ConsoleColor.Yellow);
+        
         public static List<ComplexObject<PrimitiveObject>> visibleComplexObjectsList = new List<ComplexObject<PrimitiveObject>>();
         
 
@@ -24,7 +27,7 @@ namespace Geometry
         {
             // Obsticle.AddLine(new Pixel(40, 5, 'O', ConsoleColor.Cyan), new Pixel(40, 15, 'O', ConsoleColor.Cyan));
             // Obsticle.AddLine(new Pixel(14, 18, 'O', ConsoleColor.Cyan), new Pixel(30, 10, 'O', ConsoleColor.Cyan));
-            Obsticle.AddCircle(new Pixel(30, 10, 'O', ConsoleColor.Cyan),30);
+            // Obsticle.AddCircle(new Pixel(30, 15, 'O', ConsoleColor.Cyan),20);
             // Obsticle.AddCircle(new Pixel(45, 10, 'O', ConsoleColor.Cyan),4);
             visibleComplexObjectsList.Add(Obsticle);
         }
