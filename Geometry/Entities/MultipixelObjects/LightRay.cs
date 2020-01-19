@@ -22,22 +22,6 @@ namespace Geometry.Entities.MultipixelObjects
         {
             Body.Pixels.ToList().ForEach(p => p.Draw());
         }
-
-        // private bool CheckIfIntersectedAnyVisiblePixel(Pixel currentPixel, MultipixelObject obsticle)
-        // {
-        //     bool result = false;
-        //
-        //     foreach (Pixel pixel in obsticle.Body.Pixels)
-        //     {
-        //         if (pixel.Xgrid == currentPixel.Xgrid && pixel.Ygrid == currentPixel.Ygrid)
-        //         {
-        //             result = true;
-        //             pixel.IsLit = result;
-        //         }
-        //     }
-        //
-        //     return result;
-        // }
         
         private bool CheckIfIntersectedAnyVisiblePixel(Pixel currentPixel)
         {

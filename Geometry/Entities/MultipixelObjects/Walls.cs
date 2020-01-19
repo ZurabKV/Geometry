@@ -24,7 +24,12 @@ namespace Geometry.Entities.MultipixelObjects
             SizeY = sizeY;
             StartingX = startX;
             StartingY = startY;
-            GenerateCoordinateBody();
+            GenerateSquareBody();
+        }
+        
+        public void Unlight()
+        {
+            Body.Pixels.ForEach(p=>p.IsLit=false);
         }
 
         protected void GenerateSquareBody()

@@ -11,7 +11,14 @@ namespace Geometry
     {
         public static void DrawScreen()
         {
+            GameMemory.PerimeterWall.Unlight();
+            GameMemory.Obsticle.Unlight();
+            Console.Clear();
+            
+            GameMemory.light.Cast();
+            
             GameMemory.PerimeterWall.Draw();
+            GameMemory.Obsticle.Draw();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Geometry.Entities.ComplexObjects
             source = lightSource;
         }
 
-        public void CastOn()
+        public void Cast()
         {
             Body.Parts.Clear();
             GetBody();

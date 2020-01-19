@@ -11,6 +11,7 @@
             <e p="ComplexBody.cs" t="Include" />
             <e p="IComplexObject.cs" t="Include" />
             <e p="Light.cs" t="Include" />
+            <e p="Obsticles.cs" t="Include" />
           </e>
           <e p="MultipixelObjects" t="Include">
             <e p="LightRay.cs" t="Include" />
