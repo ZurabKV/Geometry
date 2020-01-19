@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Geometry.Entities;
+using Geometry.Entities.ComplexObjects;
+using Geometry.Entities.PrimitiveObjects;
 
 namespace Geometry
 {
@@ -13,40 +15,40 @@ namespace Geometry
         {
             ConsoleKeyInfo key = Console.ReadKey();
 
-            RotatePixel(GameMemory.center, GameMemory.player, key);
-            ControlPixel(GameMemory.player, key);
+            RotateObsticle(GameMemory.light.source, GameMemory.Obsticle, key);
+            // ControlPixel(GameMemory.player, key);
             // ControlPixel(GameMemory.light.source, key);
+            GameMemory.Obsticle.MoveAround(key);
         }
 
-        private static void ControlPixel(Pixel pixel, ConsoleKeyInfo key)
-        {
-            switch (key.Key)
-            {
-                case ConsoleKey.A:
-                    pixel.x--;
-                    break;
-                case ConsoleKey.D:
-                    pixel.x++;
-                    break;
-                case ConsoleKey.W:
-                    pixel.y--;
-                    break;
-                case ConsoleKey.S:
-                    pixel.y++;
-                    break;
-            }
-        }
-        private static void RotatePixel(Pixel center, Pixel pixel, ConsoleKeyInfo key)
+        
+        // private static void RotatePixel(Pixel center, Pixel pixel, ConsoleKeyInfo key)
+        // {
+        //     switch (key.Key)
+        //     {
+        //         case ConsoleKey.LeftArrow:
+        //             pixel.RotateAround(center, -20);
+        //             break;
+        //         case ConsoleKey.RightArrow:
+        //             pixel.RotateAround(center, 20);
+        //             break;
+        //     }
+        // }
+        private static void RotateObsticle(Pixel center, Obsticles obsticle, ConsoleKeyInfo key)
         {
             switch (key.Key)
             {
                 case ConsoleKey.LeftArrow:
-                    pixel.RotateAround(center, -20);
+                    obsticle.RotateAround(center, key, -10);
                     break;
                 case ConsoleKey.RightArrow:
-                    pixel.RotateAround(center, 20);
+                    obsticle.RotateAround(center, key, 10);
                     break;
             }
         }
+        // private static void MoveObsticle(Obsticles obsticle, ConsoleKeyInfo key)
+        // {
+        //     
+        // }
     }
 }

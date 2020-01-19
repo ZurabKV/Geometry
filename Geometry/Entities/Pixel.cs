@@ -53,6 +53,24 @@ namespace Geometry.Entities
             x = otherPixel.x + x_;
             y = otherPixel.y + y_;
         }
+        public void MovePixel(ConsoleKeyInfo key)
+        {
+            switch (key.Key)
+            {
+                case ConsoleKey.A:
+                    x--;
+                    break;
+                case ConsoleKey.D:
+                    x++;
+                    break;
+                case ConsoleKey.W:
+                    y--;
+                    break;
+                case ConsoleKey.S:
+                    y++;
+                    break;
+            }
+        }
 
         public List<Pixel> GetSurroundingCells()
         {

@@ -19,8 +19,8 @@ namespace Geometry
             
             GameMemory.PerimeterWall?.Draw();
             GameMemory.Obsticle?.Draw();
-            GameMemory.center.Draw();
-            GameMemory.player.Draw();
+            // GameMemory.center?.Draw();
+            // GameMemory.player.Draw();
         }
     }
 }

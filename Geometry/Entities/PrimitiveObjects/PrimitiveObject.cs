@@ -22,5 +22,15 @@ namespace Geometry.Entities.PrimitiveObjects
         {
             Body.Pixels.Where(p=>p.isLit==true).ToList().ForEach(p => p.Draw());
         }
+
+        public void RotateAround(Pixel center, double degrees)
+        {
+            Body.Pixels.ForEach(p=>p.RotateAround(center, degrees));
+        }
+        
+        public void MoveAround(ConsoleKeyInfo key)
+        {
+            Body.Pixels.ForEach(p=>p.MovePixel(key));
+        }
     }
 }

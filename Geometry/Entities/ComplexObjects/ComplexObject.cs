@@ -7,7 +7,7 @@ namespace Geometry.Entities.ComplexObjects
     ///  defines complex objects which consist of multiple multipixel objects
     /// </summary>
     /// <typeparam name="T">Multipixel</typeparam>
-    class ComplexObject<T> where T: PrimitiveObject
+    class ComplexObject<T> where T : PrimitiveObject
     {
         protected char Shape;
         protected ConsoleColor Color;
@@ -18,6 +18,15 @@ namespace Geometry.Entities.ComplexObjects
             Shape = shape;
             Color = color;
             Body = new ComplexBody<T>();
+        }
+
+        public void MoveAround(ConsoleKeyInfo key)
+        {
+            Body.Parts.ForEach(p=>p.MoveAround(key));
+        }
+        public void RotateAround(Pixel center, ConsoleKeyInfo key, double degrees)
+        {
+            Body.Parts.ForEach(p=>p.RotateAround(center, degrees));
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Geometry.Entities.ComplexObjects
         {
             Body.Parts.Clear();
             GetBody();
-            // Body.Parts.ForEach(r => r.Draw());
+            Body.Parts.ForEach(r => r.Draw());
             source.Draw();
         }
 
