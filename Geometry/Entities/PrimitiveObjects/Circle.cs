@@ -49,26 +49,5 @@ namespace Geometry.Entities.PrimitiveObjects
 
             Body.Pixels.RemoveAll(p=>p.excessive);
         }
-
-        // public void Optimize()
-        // {
-        //     foreach (Pixel pixelA in Body.Pixels)
-        //     {
-        //         foreach (var pixelB in Body.Pixels.Select((value, i) => new { i, value }))
-        //         {
-        //             if (pixelA?.Xgrid == pixelB?.value.Xgrid && pixelA?.Ygrid == pixelB?.value.Ygrid&&pixelA?.id!=pixelB?.value.id)
-        //             {
-        //                 Body.Pixels[pixelB.i].excessive=true;
-        //             }
-        //         }
-        //     }
-        //     foreach (var pixel in Body.Pixels.Select((value, i) => new { i, value }))
-        //     {
-        //         if (pixel.value.excessive)
-        //         {
-        //             Body.Pixels.RemoveAt(pixel.i);
-        //         }
-        //     }
-        // }
     }
 }
