@@ -15,7 +15,7 @@ namespace Geometry
         {
             ConsoleKeyInfo key = Console.ReadKey();
 
-            RotateObsticle(GameMemory.light.source, GameMemory.Obsticle, key);
+            RotateObsticle(GameMemory.center, GameMemory.Obsticle, key);
             // ControlPixel(GameMemory.player, key);
             // ControlPixel(GameMemory.light.source, key);
             GameMemory.Obsticle.MoveAround(key);

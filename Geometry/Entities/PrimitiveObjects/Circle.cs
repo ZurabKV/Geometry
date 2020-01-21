@@ -19,9 +19,9 @@ namespace Geometry.Entities.PrimitiveObjects
         private void GenerateBody()
         {
             double y;
-            for (double x = centeral.x - radius; x <= centeral.x + radius; x += 0.4)
+            for (double x = centeral.x - radius; x <= centeral.x + radius; x += 0.3)
             {
-                y = (Math.Sqrt(Math.Pow(radius, 2) - Math.Pow((x - centeral.x), 2)) * 0.40 + centeral.y);
+                y = (Math.Sqrt(Math.Pow(radius, 2) - Math.Pow((x - centeral.x), 2)) /** 0.40 */+ centeral.y);
                 Body.Pixels.Add(new Pixel(x, y, Shape, Color));
                 y -= 2 * (y - centeral.y);
                 Body.Pixels.Add(new Pixel(x, y, Shape, Color));
